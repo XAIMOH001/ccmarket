@@ -1,26 +1,22 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home page</title>
-    {% load static %}
+    <title>Campus Connect Market</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="{% static 'asset/logo.png' %}">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
-
 <body>
-
-<header class="header-container">
-    <div class="logo">
-        <a href=""><img src="{% static 'assets/logo.png' %}" alt="market logo"></a>
-        <span>Campus~Connect Market</span>
-    </div>
-    <div>
-        <nav>
+    <header>
+        <div class="container">
+            <h1>Campus Connect Market</h1>
+            <p class="slogan">Find What You Need, Sell What You Don’t!</p>
+           <nav>
             <ul>
                 <li><a href=" /">Home</a></li>
                 <li><a href="register/">Register</a></li>
@@ -30,54 +26,46 @@
                 <li><a href="sell/">sell</a></li>
             </ul>
         </nav>
-    </div>
-</header>
-
-<main>
+        </div>
+    </header>
 
     <section class="hero">
-
-        <div class="hero-content">
-            <h1>welcome to Campus Connect </h1>
-            <h4>“Find What You Need, Sell What You Don’t!”</h4>
-            <button type="button">proceed</button>
-
+        <div class="container">
+            <h2>Welcome to your student marketplace</h2>
+            <p>Discover affordable second-hand items from fellow students!</p>
+            <a href="#" class="btn">Get Started</a>
         </div>
-
     </section>
 
-</main>
-
-<footer>
-    <div class="footer-container">
-
-        <div class="about">
-            <h4>About Us</h4>
-            <p>Our platform is built with students in mind, offering a secure and user-friendly experience. By
-                connecting
-                buyers and sellers directly, we make it easy for you to “Find What You Need, Sell What You Don’t!”</p>
+    <section id="categories" class="categories">
+        <div class="container">
+            <h3>Popular Categories</h3>
+            <div class="category-grid">
+                <div class="category-card"><i class="fas fa-laptop"></i> Electronics</div>
+                <div class="category-card"><i class="fas fa-book"></i> Books</div>
+                <div class="category-card"><i class="fas fa-couch"></i> Furniture</div>
+                <div class="category-card"><i class="fas fa-tshirt"></i> Clothes</div>
+            </div>
         </div>
-        <div class="navi">
-            <h4>quick links</h4>
-            <ul>
-                <li><a href="index/">Home</a></li>
-                <li><a href="register/">Register</a></li>
-                <li><a href="items/">Items</a></li>
-                <li><a href="User/">user</a></li>
-                <li><a href="categories/">Categories</a></li>
-                <li><a href="sell/">sell</a></li>
-            </ul>
-        </div>
-        <div class="socials">
-            <h4>Follow Us on Social Media!</h4>
-            <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </div>
+    </section>
 
+    <section id="about" class="about">
+        <div class="container">
+            <h3>About Us</h3>
+            <p>We are a student-driven platform at Maasai Mara University dedicated to making campus life easier by connecting buyers and sellers of second-hand items. Join us and make sustainable choices while saving money!</p>
+        </div>
+    </section>
 
-</footer>
+    <footer id="contact">
+        <div class="container">
+            <p>Contact us: campusconnect@gmail.com</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Campus Connect Market. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
