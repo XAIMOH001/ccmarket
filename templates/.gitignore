@@ -1,5 +1,17 @@
+# Python bytecode (the stuff in your commit log)
 __pycache__/
 *.pyc
+
+# Virtual Environments (the Linux one you just made)
 myCcvenv/
+venv/
+campusvenv/
+
+# Local Database (SQLite contains your local test data)
 db.sqlite3
+
+# IDE settings (the folder at the top of your image)
+.idea/
+
+# Environment variables (for secrets like SECRET_KEY)
 .env
