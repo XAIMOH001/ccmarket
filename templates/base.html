@@ -19,10 +19,12 @@
 
 <header class="header-container">
     <div class="logo">
-        <a href=""><img src="{% static 'assets/logo.png' %}" alt="market logo"></a>
+        <a href="{% url 'home' %}">
+        <i class="fa-solid fa-recycle" style="color: rgba(28, 152, 83, 1.00);"></i>            
         <span>Campus Connect</span>
+        </a>
     </div>
-    <div>
+    <div class="nav-container">
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
