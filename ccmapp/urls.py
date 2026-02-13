@@ -4,7 +4,7 @@ from django.urls import path
 from ccmapp import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.index, name='home'),
     path('User/', views.user, name='user'),
     path('categories/', views.categories, name='categories'),
     path('items/', views.items, name='items'),

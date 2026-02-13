@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | Campus Connect{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="welcome">Buy & Sell Within Your</h1>
+            <h2 class="welcome" >Campus Community</h2>
+            <h4>“Find What You Need, Sell What You Don't!”</h4>
+            <a href="{% url 'contact' %}"><button type="button">Browse Market place</button></a>
+            <a href="{% url 'sell' %}"><button>Sell an Item</button></a>
+        </div>
+    </section>
+{% endblock %}

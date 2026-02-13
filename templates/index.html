@@ -6,9 +6,11 @@
 {% block content %}
     <section class="hero">
         <div class="hero-content">
-            <h1 class="welcome">Welcome to Campus Connect</h1>
-            <h4>“Find What You Need, Sell What You Don’t!”</h4>
-            <a href="{% url 'contact' %}"><button type="button">Proceed</button></a>
+            <h1 class="welcome">Buy & Sell Within Your</h1>
+            <h2 class="welcome" >Campus Community</h2>
+            <h4>“Find What You Need, Sell What You Don't!”</h4>
+            <a href="{% url 'contact' %}"><button type="button" class="market_btn">Browse Marketplace</button></a>
+            <a href="{% url 'sell' %}"><button type="button" class="sell_btn">Sell an Item</button></a>
         </div>
     </section>
 {% endblock %}
