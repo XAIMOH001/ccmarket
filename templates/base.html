@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
 </head>
 
 
@@ -24,18 +25,18 @@
         <span>Campus Connect</span>
         </a>
     </div>
-    <div class="nav-container">
+    <div>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
                 <li><a href="{% url 'items' %}">Items</a></li>
-                <li><a href="{% url 'user' %}">user</a></li>
-                <li><a href="{% url 'categories' %}">Categories</a></li>
-                <li><a href="{% url 'sell' %}">sell</a></li>
-                <li><a href="{% url 'contact' %}">contact us</a></li>
+                <li><a href="{% url 'sell' %}">sell_Item</a></li>
             </ul>
         </nav>
+    </div>
+    <div>
+        <a href="{% url 'register' %}">
+            <button class="sign-btn">+Sign in</button>
+        </a>
     </div>
 </header>
 
@@ -47,18 +48,16 @@
 <footer>
     <div class="footer-container">
 
-        <div class="about">
             <h4>Campus Connect Marketplace</h4>
             <p>Promoting sustainability & affordability within your campus community.</p>
-        </div>
-       
-        <div class="socials">
+      
+        <!-- <div class="socials">
             <h4>Follow Us on Social Media!</h4>
             <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="https://www.twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
+        </div> -->
         <p>&copy; {% now "Y" %} Campus Connect Market. Built for students, by students</p>
     </div>
 

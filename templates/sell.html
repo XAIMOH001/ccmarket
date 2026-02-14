@@ -1,16 +1,82 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home | Campus Connect{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/sell.css' %}">
+{% endblock %}
 
 {% block content %}
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="welcome">Buy & Sell Within Your</h1>
-            <h2 class="welcome" >Campus Community</h2>
-            <h4>“Find What You Need, Sell What You Don't!”</h4>
-            <a href="{% url 'contact' %}"><button type="button">Browse Market place</button></a>
-            <a href="{% url 'sell' %}"><button>Sell an Item</button></a>
+<div class="container">
+    <div class="sell-header">
+        <h1>Sell an Item</h1>
+        <p>Fill in the details below to list your item on the marketplace.</p>
+    </div>
+
+    <form action="{% url 'sell' %}" method="POST" enctype="multipart/form-data" class="sell-form">
+        {% csrf_token %}
+
+        <div class="upload-card">
+            <div class="upload-content">
+                <i class="fas fa-image-plus"></i> <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <p class="upload-title">Add photos</p>
+                <p class="upload-subtitle">Upload up to 5 images</p>
+                <input type="file" name="image" id="image-upload" hidden>
+                <label for="image-upload" class="upload-label"></label>
+            </div>
         </div>
-    </section>
+
+        <div class="form-section">
+            <div class="input-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="What are you selling?" required>
+            </div>
+
+            <div class="input-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" placeholder="Describe your item — condition details, included accessories, etc." required></textarea>
+            </div>
+
+            <div class="grid-2">
+                <div class="input-group">
+                    <label for="price">Price ($)</label>
+                    <input type="number" id="price" name="price" step="0.01" placeholder="0.00" required>
+                </div>
+                <div class="input-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="books">Books</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="input-group">
+                    <label for="condition">Condition</label>
+                    <select id="condition" name="condition" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="new">New</option>
+                        <option value="used-good">Used - Good</option>
+                        <option value="used-fair">Used - Fair</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="location">Pickup Location</label>
+                    <input type="text" id="location" name="location" placeholder="e.g. West Campus" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-post">Post Listing</button>
+            <button type="button" class="btn-cancel" onclick="history.back()">Cancel</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

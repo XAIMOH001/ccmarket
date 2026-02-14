@@ -1,16 +1,93 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home | Campus Connect{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
 
 {% block content %}
+<div class="home-wrapper">
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="welcome">Buy & Sell Within Your</h1>
-            <h2 class="welcome" >Campus Community</h2>
-            <h4>“Find What You Need, Sell What You Don't!”</h4>
-            <a href="{% url 'contact' %}"><button type="button" class="market_btn">Browse Marketplace</button></a>
-            <a href="{% url 'sell' %}"><button type="button" class="sell_btn">Sell an Item</button></a>
+        <div class="container hero-content">
+            <div class="badge-eco">
+                <i class="fa-solid fa-recycle"></i> Sustainable Student Marketplace
+            </div>
+            <h1>Buy & Sell Within Your <span class="text-green">Campus Community</span></h1>
+            <p>Give your items a second life. Find affordable books, electronics, clothing, and more from fellow students.</p>
+            <div class="hero-btns">
+                <a href="{% url 'items' %}" class="btn market_btn">Browse Marketplace <i class="fas fa-arrow-right"></i></a>
+                <a href="{% url 'sell' %}" class="btn sell_btn">Sell an Item</a>
+            </div>
         </div>
     </section>
+
+    <section class="stats-bar">
+        <div class="container stats-flex">
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <div>
+                    <span class="stat-value">2,400+</span>
+                    <span class="stat-label">Active Students</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-box"></i>
+                <div>
+                    <span class="stat-value">1,100+</span>
+                    <span class="stat-label">Listings</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-recycle"></i>
+                <div>
+                    <span class="stat-value">800+</span>
+                    <span class="stat-label">Items Rehomed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <a href="{% url 'items' %}?category=Books" class="category-card">
+                    <div class="cat-icon-circle"><i class="fas fa-book"></i></div>
+                    <span>Books</span>
+                </a>
+                <a href="{% url 'items' %}?category=Electronics" class="category-card">
+                    <div class="cat-icon-circle"><i class="fas fa-laptop"></i></div>
+                    <span>Electronics</span>
+                </a>
+                <a href="{% url 'items' %}?category=Clothing" class="category-card">
+                    <div class="cat-icon-circle"><i class="fas fa-tshirt"></i></div>
+                    <span>Clothing</span>
+                </a>
+                <a href="{% url 'items' %}?category=Furniture" class="category-card">
+                    <div class="cat-icon-circle"><i class="fas fa-couch"></i></div>
+                    <span>Furniture</span>
+                </a>
+                <a href="{% url 'items' %}?category=Sports" class="category-card">
+                    <div class="cat-icon-circle"><i class="fas fa-running"></i></div>
+                    <span>Sports</span>
+                </a>
+                <a href="{% url 'items' %}?category=Other" class="category-card">
+                    <div class="cat-icon-circle"><i class="fas fa-archive"></i></div>
+                    <span>Other</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <i class="fas fa-recycle cta-big-icon"></i>
+                <h2>Got items collecting dust?</h2>
+                <p>Turn your unused textbooks, gear, and clothes into cash — and help a fellow student out.</p>
+                <a href="{% url 'sell' %}" class="btn btn-primary">Start Selling <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}

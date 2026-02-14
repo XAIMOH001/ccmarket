@@ -1,0 +1,138 @@
+.container {
+    max-width: 672px; 
+    margin: 0 auto;
+    padding: 32px 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sell-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 560;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.sell-header p {
+    color: #666;
+    margin-bottom: 32px;
+}
+
+.upload-card {
+    border: 2px dashed #e5e7eb;
+    border-radius: 12px;
+    background-color: #fafafa;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.upload-card:hover {
+    border-color: #3f9a6b;
+    background-color: #f0fdf4;
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    color: #9ca3af;
+    margin-bottom: 12px;
+}
+
+.upload-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.upload-subtitle {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.upload-label {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    cursor: pointer;
+}
+
+/* Form Inputs */
+.form-section {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #3f9a6b;
+    ring: 2px solid rgba(45, 90, 39, 0.1);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.btn-post {
+    flex: 1;
+    background-color: #3f9a6b; 
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-post:hover {
+    background-color: #3f9a6b;
+}
+
+.btn-cancel {
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #f9fafb;
+}

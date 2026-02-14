@@ -1,5 +1,5 @@
 body {
-    background-color: #fff;
+    background-color: #eae7e7;
     font-family: 'Playfair Display', serif;
 }
 
@@ -14,34 +14,15 @@ header {
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
-    margin: auto;
     padding: 10px 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 a {
     text-decoration: none;
     color: #333333;
 }
-.market_btn {
-    background-color: #3f9a6b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-} 
-.sell_btn {
-    background-color: #fff;
-    color: black;
-    border: 2px solid darkgrey;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+
 
 .market_btn:hover {
     background-color: #3f9a6b;
@@ -59,13 +40,33 @@ a {
     color: #333333;
 }
 
+.sign-btn {
+    background-color: #3f9a6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+        height: 40px;
+
+}
 .logo-icon {
     width: 100px;
     height: 40px;
     border-radius: 50%;
 }
 
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
 nav ul {
+    display: flex;
+    list-style: none;
+    gap: 4px;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -92,27 +93,7 @@ nav ul li a:hover {
     color: #2D5A27;
 }
 
-.hero {
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: black;
-}
 
-
-
-.hero-content {
-    max-width: 800px;
-    padding: 2px;
-}
-
-.welcome{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 1200;
-    font-size: 60px;
-}
 
 h1 {
     color: black;}
@@ -125,7 +106,7 @@ h2{
 footer {
     background-color: #fff;
     color: #333333;
-    padding: 40px 0 20px 0;
+    padding-top: 20px;
 }
 
 .footer-container{
@@ -134,6 +115,18 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
+
+
+h4{
+    margin-top: 0;      
+    margin-bottom: 8px; 
+}
+p  {
+    margin-top: 0;     
+    margin-bottom: 8px; 
+}
+

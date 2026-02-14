@@ -1,16 +1,68 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home | Campus Connect{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/items.css' %}">
+{% endblock %}
 
 {% block content %}
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="welcome">Buy & Sell Within Your</h1>
-            <h2 class="welcome" >Campus Community</h2>
-            <h4>“Find What You Need, Sell What You Don't!”</h4>
-            <a href="{% url 'contact' %}"><button type="button">Browse Market place</button></a>
-            <a href="{% url 'sell' %}"><button>Sell an Item</button></a>
+<div class="container">
+    <div class="browse-header">
+        <h1>Browse Marketplace</h1>
+        <p class="item-count">{{ items|length }} items available</p>
+    </div>
+
+    <div class="filter-section">
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search items..." class="search-input">
         </div>
-    </section>
+        
+        <div class="filter-controls">
+            <select class="filter-dropdown">
+                <option>Category</option>
+                <option>Books</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+            </select>
+
+            <select class="filter-dropdown">
+                <option>Condition</option>
+                <option>New</option>
+                <option>Used - Good</option>
+                <option>Used - Fair</option>
+            </select>
+
+            <select class="filter-dropdown">
+                <option>Newest</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="listings-grid">
+        {% for item in items %}
+        <div class="listing-card">
+            <div class="card-image">
+                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            </div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <span class="card-price">${{ item.price }}</span>
+                </div>
+                <div class="card-badges">
+                    <span class="badge category-badge">{{ item.category }}</span>
+                    <span class="badge condition-badge">{{ item.condition }}</span>
+                </div>
+                <div class="card-footer">
+                    <span class="location"><i class="fas fa-map-marker-alt"></i> {{ item.location }}</span>
+                    <span class="timestamp">{{ item.created_at|timesince }} ago</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
