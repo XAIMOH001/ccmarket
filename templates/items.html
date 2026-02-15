@@ -6,64 +6,36 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<section class="browse-section">
     <div class="browse-header">
-        <h1>Browse Marketplace</h1>
-        <p class="item-count">{{ items|length }} items available</p>
+        <h1>Campus Listings</h1>
+        <p>Find what you need, sold by students you trust.</p>
     </div>
-
-    <div class="filter-section">
-        <div class="search-wrapper">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" placeholder="Search items..." class="search-input">
-        </div>
-        
-        <div class="filter-controls">
-            <select class="filter-dropdown">
-                <option>Category</option>
-                <option>Books</option>
-                <option>Electronics</option>
-                <option>Clothing</option>
-            </select>
-
-            <select class="filter-dropdown">
-                <option>Condition</option>
-                <option>New</option>
-                <option>Used - Like New</option>
-                <option>Used - Good</option>
-                <option>Used - Fair</option>
-            </select>
-
-            <select class="filter-dropdown">
-                <option>Newest</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="listings-grid">
+    <div class="items-grid">
         {% for item in items %}
-        <div class="listing-card">
-            <div class="card-image">
-                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            <div class="item-card">
+                <div class="item-image">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.png' %}" alt="No image">
+                    {% endif %}
+                    <span class="item-category">{{ item.category.name }}</span>
+                </div>
+                <div class="item-details">
+                    <h3>{{ item.title }}</h3>
+                    <p class="item-condition">{{ item.condition }}</p>
+                    <div class="item-footer">
+                        <span class="item-price">KSh {{ item.price }}</span>
+                        <a href="#" class="view-btn">View Details</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-content">
-                <div class="card-header">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <span class="card-price">${{ item.price }}</span>
-                </div>
-                <div class="card-badges">
-                    <span class="badge category-badge">{{ item.category }}</span>
-                    <span class="badge condition-badge">{{ item.condition }}</span>
-                </div>
-                <div class="card-footer">
-                    <span class="location"><i class="fas fa-map-marker-alt"></i> {{ item.location }}</span>
-                    <span class="timestamp">{{ item.created_at|timesince }} ago</span>
-                </div>
+        {% empty %}
+            <div class="no-items">
+                <p>No items found. Be the first to <a href="{% url 'sell' %}">list something!</a></p>
             </div>
-        </div>
         {% endfor %}
     </div>
-</div>
+</section>
 {% endblock %}

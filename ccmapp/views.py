@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .models import Item
 
 from django.contrib.auth.decorators import login_required
 
@@ -29,7 +30,8 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def items(request):
-    return render(request, 'items.html')
+    items = Item.objects.filter(is_sold=False).order_by('-created_at')
+    return render(request, 'items.html', {'items': items})
 
 def sell(request):
     return render(request, 'sell.html')
