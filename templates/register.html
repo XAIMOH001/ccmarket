@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+        <i class="fa-solid fa-recycle" style="color: rgba(28, 152, 83, 1.00);"></i>            
+            <h1>Join the Community</h1>
+            <p>Create an account to start buying and selling.</p>
+        </div>
+
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="username" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-group">
+                <label>University Email</label>
+                <input type="email" name="email" placeholder="student@university.ac.ke" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-auth">Create Account</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

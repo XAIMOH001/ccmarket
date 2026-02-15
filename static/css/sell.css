@@ -21,7 +21,7 @@
 .upload-card {
     border: 2px dashed #e5e7eb;
     border-radius: 12px;
-    background-color: #fafafa;
+    background-color: #fff;
     position: relative;
     transition: all 0.2s;
 }
@@ -92,7 +92,7 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: #3f9a6b;
-    ring: 2px solid rgba(45, 90, 39, 0.1);
+    box-shadow: 2px solid rgba(45, 90, 39, 0.1);
 }
 
 .grid-2 {

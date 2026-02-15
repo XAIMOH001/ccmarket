@@ -1,0 +1,100 @@
+/* auth.css */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Keeps it centered vertically */
+    padding: 20px;
+}
+
+.auth-card {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-icon {
+    font-size: 2.5rem;
+    color: #3f9a6b;
+    margin-bottom: 15px;
+}
+
+.auth-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.auth-header p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+/* Applying the fix for the 'ring' effect we discussed */
+.form-group input:focus {
+    outline: none;
+    border-color: #3f9a6b;
+    box-shadow: 0 0 0 4px rgba(45, 90, 39, 0.1);
+}
+
+.btn-auth {
+    width: 100%;
+    background-color: #3f9a6b;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-auth:hover {
+    background-color: #6bbc92;
+}
+
+.auth-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #3f9a6b;
+    font-weight: 600;
+    text-decoration: none;
+}

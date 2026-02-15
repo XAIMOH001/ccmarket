@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import path
 from ccmapp import views
 
+
 urlpatterns = [
     path('', views.index, name='home'),
     path('User/', views.user, name='user'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('sell/', views.sell, name='sell'),
     path('register/', views.register, name='register'),
     path('contact/', views.contact, name='contact'),
+    path('login/', views.login, name="login")
 ]
