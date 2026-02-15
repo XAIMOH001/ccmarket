@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Campus-connect</title>
     {% load static %}
@@ -11,57 +12,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
     {% block extra_css %}{% endblock %}
 </head>
 
 
 <body>
 
-<header class="header-container">
-    <div class="logo">
-        <a href="{% url 'home' %}">
-        <i class="fa-solid fa-recycle" style="color: rgba(28, 152, 83, 1.00);"></i>            
-        <span>Campus Connect</span>
-        </a>
-    </div>
-    <div>
+    <header class="header-container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <i class="fa-solid fa-recycle" style="color: rgba(28, 152, 83, 1.00);"></i>
+                <span>Campus Connect</span>
+            </a>
+        </div>
+
         <nav>
             <ul>
-                <li><a href="{% url 'items' %}">Items</a></li>
-                <li><a href="{% url 'sell' %}">sell_Item</a></li>
+                <li><a href="{% url 'items' %}">Browse Items</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'sell' %}">Sell_Item</a></li>
+                {% endif %}
             </ul>
         </nav>
-    </div>
-    <div>
-        <a href="{% url 'login' %}">
-            <button class="sign-btn">+Sign in</button>
-        </a>
-    </div>
-</header>
 
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
+        <div class="auth-actions">
+            {% if user.is_authenticated %}
+            <span class="user-name">Hi, {{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="logout-link">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}">
+                <button class="sign-btn">+ Sign In</button>
+            </a>
+            <a href="{% url 'register' %}" class="join-link">Join</a>
+            {% endif %}
+        </div>
+    </header>
 
-<footer>
-    <div class="footer-container">
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-container">
 
             <h4>Campus Connect Marketplace</h4>
             <p>Promoting sustainability & affordability within your campus community.</p>
-      
-        <!-- <div class="socials">
-            <h4>Follow Us on Social Media!</h4>
-            <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div> -->
-        <p>&copy; {% now "Y" %} Campus Connect Market. Built for students, by students</p>
-    </div>
+            <p>&copy; {% now "Y" %} Campus Connect Market. Built for students, by students</p>
+        </div>
 
 
-</footer>
+    </footer>
 </body>
+
 </html>
