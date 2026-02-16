@@ -14,7 +14,7 @@
             <p>Login to manage your listings or buy items.</p>
         </div>
 
-        <form method="POST" class="auth-form">
+        <form method="POST" class="auth-form" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
             {% csrf_token %}
             <div class="form-group">
                 <label>Username</label>

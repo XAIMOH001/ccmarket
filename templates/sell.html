@@ -15,16 +15,17 @@
     <form action="{% url 'sell' %}" method="POST" enctype="multipart/form-data" class="sell-form">
         {% csrf_token %}
 
-        <div class="upload-card">
+        <div class="upload-card" id="drop-zone">
             <div class="upload-content">
-                <i class="fas fa-image-plus"></i> <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                     <circle cx="8.5" cy="8.5" r="1.5"/>
                     <polyline points="21 15 16 10 5 21"/>
                 </svg>
-                <p class="upload-title">Add photos</p>
-                <p class="upload-subtitle">Upload up to 5 images</p>
-                <input type="file" name="image" id="image-upload" hidden>
+                <p class="upload-title" id="file-name-display">Add photos</p>
+                <p class="upload-subtitle">Click to browse or drag and drop</p>
+                
+                <input type="file" name="image" id="image-upload" accept="image/*" hidden required>
                 <label for="image-upload" class="upload-label"></label>
             </div>
         </div>
@@ -41,19 +42,17 @@
             </div>
 
             <div class="grid-2">
-            
                 <div class="input-group">
                     <label for="category">Category</label>
                     <select id="category" name="category" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="books">Books</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="clothing">Clothing</option>
-                        <option value="furniture">Furniture</option>
+                        <option value="" disabled selected>Select Category</option>
+                        {% for cat in form.fields.category.queryset %}
+                            <option value="{{ cat.id }}">{{ cat.name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="input-group">
-                    <label for="price">Price ($)</label>
+                    <label for="price">Price (KSh)</label>
                     <input type="number" id="price" name="price" step="0.01" placeholder="0.00" required>
                 </div>
             </div>
@@ -62,10 +61,11 @@
                 <div class="input-group">
                     <label for="condition">Condition</label>
                     <select id="condition" name="condition" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="new">New</option>
-                        <option value="used-good">Good</option>
-                        <option value="used-fair">Fair</option>
+                        <option value="" disabled selected>Select Condition</option>
+                        {% for value, label in form.fields.condition.choices %}
+                            {% if value %} <option value="{{ value }}">{{ label }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="input-group">
@@ -81,4 +81,31 @@
         </div>
     </form>
 </div>
+
+<script>
+    const fileInput = document.getElementById('image-upload');
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const dropZone = document.getElementById('drop-zone');
+
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            const fileName = this.files[0].name;
+            fileNameDisplay.textContent = "Selected: " + fileName;
+            fileNameDisplay.style.color = "#3f9a6b";
+            dropZone.style.borderColor = "#3f9a6b";
+            dropZone.style.backgroundColor = "#f0fdf4";
+        }
+    });
+
+    // Optional: Add simple drag and drop visual feedback
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = "#3f9a6b";
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.style.borderColor = "#e5e7eb";
+    });
+</script>
+
 {% endblock %}

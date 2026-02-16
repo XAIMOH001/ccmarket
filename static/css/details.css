@@ -1,0 +1,158 @@
+/* Layout & Container */
+.detail-view {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.back-navigation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #64748b;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: color 0.2s;
+}
+
+.back-navigation:hover { color: #0f172a; }
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+}
+
+/* Image Handling */
+.main-image-wrapper {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    background: #fff;
+}
+
+.main-image-wrapper img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+}
+
+/* Typography & Price */
+.display-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 12px 0;
+    line-height: 1.2;
+}
+
+.price-tag {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #16a34a; /* Matches the green in image */
+}
+
+/* Metadata */
+.metadata-group {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* UI Components (Badges & Buttons) */
+.badge-container { display: flex; gap: 8px; }
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge-secondary { background: #f1f5f9; color: #475569; }
+.badge-outline { border: 1px solid #e2e8f0; color: #64748b; }
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #16a34a;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-primary:hover { background: #15803d; }
+
+.btn-icon {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+.btn-icon:hover { background: #f8fafc; color: #0f172a; }
+
+.action-row { display: flex; gap: 12px; }
+.btn-grow { flex: 1; }
+
+/* Seller Card Styles */
+.ui-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(22, 163, 74, 0.1);
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.seller-name { font-weight: 600; margin: 0; }
+.seller-sub { font-size: 0.75rem; color: #64748b; margin: 0; }
+
+.description-block h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.description-block p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .product-layout { grid-template-columns: 1fr; }
+}

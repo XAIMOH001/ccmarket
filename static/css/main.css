@@ -1,6 +1,14 @@
 body {
     background-color: #faf8f4;
     font-family: 'Playfair Display', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main{
+    flex: 1;
 }
 
 header {
@@ -124,7 +132,7 @@ a {
 .logo-icon {
     width: 100px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 8px;
 }
 
 nav {
@@ -175,7 +183,8 @@ h2{
 footer {
     background-color: #fff;
     color: #333333;
-    padding-top: 20px;
+    padding-top: 20px 0;
+    border-top: 1px solid #eee;
 }
 
 .footer-container{
@@ -199,3 +208,24 @@ p  {
     margin-bottom: 8px; 
 }
 
+.alert {
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

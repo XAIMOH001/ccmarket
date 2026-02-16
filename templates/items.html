@@ -6,36 +6,77 @@
 {% endblock %}
 
 {% block content %}
-<section class="browse-section">
+<div class="container">
     <div class="browse-header">
-        <h1>Campus Listings</h1>
-        <p>Find what you need, sold by students you trust.</p>
+        <h1>Browse Marketplace</h1>
+        <p class="item-count">{{ items|length }} item{{ items|pluralize }} available</p>
     </div>
-    <div class="items-grid">
+
+    <form method="GET" action="{% url 'items' %}" class="filter-section">
+    <div class="search-row">
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" name="query" value="{{ query|default:'' }}" placeholder="Search items..." class="search-input">
+        </div>
+    </div>
+    
+    <div class="filter-controls">
+        <select name="category" class="filter-dropdown" onchange="this.form.submit()">
+            <option value="">All Categories</option>
+            {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if request.GET.category == cat.id|stringformat:"i" %}selected{% endif %}>
+                {{ cat.name }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <select name="condition" class="filter-dropdown" onchange="this.form.submit()">
+            <option value="">Any Condition</option>
+            <option value="New" {% if request.GET.condition == "New" %}selected{% endif %}>New</option>
+            <option value="Used - Like New" {% if request.GET.condition == "Used - Like New" %}selected{% endif %}>Like New</option>
+            <option value="Used - Good" {% if request.GET.condition == "Used - Good" %}selected{% endif %}>Good</option>
+            <option value="Used - Fair" {% if request.GET.condition == "Used - Fair" %}selected{% endif %}>Fair</option>
+        </select>
+
+        <a href="{% url 'items' %}" class="clear-btn">
+            <i class="fas fa-undo"></i> Clear
+        </a>
+    </div>
+</form>
+
+    <div class="listings-grid">
         {% for item in items %}
-            <div class="item-card">
-                <div class="item-image">
-                    {% if item.image %}
-                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
-                    {% else %}
-                        <img src="{% static 'images/placeholder.png' %}" alt="No image">
-                    {% endif %}
-                    <span class="item-category">{{ item.category.name }}</span>
+        <a href="{% url 'item_detail' item.pk %}" class="card-link">
+        <div class="listing-card">
+            <div class="card-image">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                {% else %}
+                    <img src="{% static 'images/placeholder.png' %}" alt="Placeholder">
+                {% endif %}
+            </div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <span class="card-price">KSh {{ item.price }}</span>
                 </div>
-                <div class="item-details">
-                    <h3>{{ item.title }}</h3>
-                    <p class="item-condition">{{ item.condition }}</p>
-                    <div class="item-footer">
-                        <span class="item-price">KSh {{ item.price }}</span>
-                        <a href="#" class="view-btn">View Details</a>
-                    </div>
+                <div class="card-badges">
+                    <span class="badge category-badge">{{ item.category.name }}</span>
+                    <span class="badge condition-badge">{{ item.condition }}</span>
+                </div>
+                <div class="card-footer">
+                    <span class="location"><i class="fas fa-location-dot"></i> Campus Core</span>
+                    <span class="timestamp">{{ item.created_at|timesince }} ago</span>
                 </div>
             </div>
+        </div>
         {% empty %}
-            <div class="no-items">
-                <p>No items found. Be the first to <a href="{% url 'sell' %}">list something!</a></p>
-            </div>
-        {% endfor %}
+        <div class="no-results">
+            <i class="fas fa-search"></i>
+            <h3>No items found</h3>
+            <p>Try adjusting your search or filters.</p>
+        </div>
+        </a>{% endfor %}
     </div>
-</section>
+</div>
 {% endblock %}

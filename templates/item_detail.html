@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container detail-view">
+    <a href="{% url 'items' %}" class="back-navigation">
+        <i class="fas fa-arrow-left"></i> Back to listings
+    </a>
+
+    <div class="product-layout">
+        <div class="image-gallery">
+            <div class="main-image-wrapper">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                {% else %}
+                    <img src="{% static 'images/placeholder.png' %}" alt="No image available">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="product-sidebar">
+            <div class="header-group">
+                <div class="badge-container">
+                    <span class="badge badge-secondary">{{ item.category.name }}</span>
+                    <span class="badge badge-outline">{{ item.condition }}</span>
+                </div>
+                <h1 class="display-title">{{ item.title }}</h1>
+                <p class="price-tag">KSh {{ item.price }}</p>
+            </div>
+
+            <div class="metadata-group">
+                <div class="meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{{ item.location|default:"Engineering Building" }}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="far fa-clock"></i>
+                    <span>Posted {{ item.created_at|timesince }} ago</span>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <a href="mailto:{{ item.seller.email }}" class="btn btn-primary btn-grow">
+                    <i class="fas fa-comment-alt"></i> Contact Seller
+                </a>
+                <button class="btn btn-icon"><i class="far fa-heart"></i></button>
+                <button class="btn btn-icon"><i class="fas fa-share-nodes"></i></button>
+            </div>
+
+            <div class="ui-card">
+                <div class="avatar">
+                    <span>{{ item.seller.username|slice:":2"|upper }}</span>
+                </div>
+                <div class="seller-info">
+                    <p class="seller-name">{{ item.seller.username }}</p>
+                    <p class="seller-sub">Verified Student</p>
+                </div>
+            </div>
+
+            <div class="description-block">
+                <h3>Description</h3>
+                <p>{{ item.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
