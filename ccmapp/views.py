@@ -15,7 +15,7 @@ def index(request):
         Category.objects.create(name="Electronics")
         Category.objects.create(name="Books")
         Category.objects.create(name="Furniture")
-        Category.objects.create(name="Clothes")
+        Category.objects.create(name="Clothing")
         Category.objects.create(name="Sports")
         Category.objects.create(name="Others")
     
