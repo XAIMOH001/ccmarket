@@ -7,7 +7,23 @@ from .models import Item, Category
 from .forms import ItemForm, ExtendedUserCreationForm # Use the custom form
 
 # Use login_required only where necessary. Landing page (index) is usually public.
+from django.contrib.auth.models import User # Add this import at the top
+
 def index(request):
+    # 1. Auto-create Categories
+    if not Category.objects.exists():
+        Category.objects.create(name="Electronics")
+        Category.objects.create(name="Books")
+        Category.objects.create(name="Furniture")
+        Category.objects.create(name="Clothes")
+        Category.objects.create(name="Sports")
+        Category.objects.create(name="Others")
+    
+    # 2. Auto-create Admin (Superuser)
+    # This creates a user with username 'admin' and password 'admin123'
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.ac.ke', 'admin123')
+    
     all_categories = Category.objects.all()
     return render(request, 'index.html', {'categories': all_categories})
 
