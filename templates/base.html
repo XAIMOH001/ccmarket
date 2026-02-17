@@ -43,7 +43,7 @@
             <span class="user-name">Hi, {{ user.username }}</span>
             <a href="{% url 'logout' %}" class="logout-link">Logout</a>
             {% else %}
-            <a href="{% url 'login' %}">
+            <a href="{% url 'login_view' %}">
                 <button class="sign-btn">+ Sign In</button>
             </a>
             <a href="{% url 'register' %}" class="join-link">Join</a>
