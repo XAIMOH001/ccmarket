@@ -13,5 +13,6 @@ db.sqlite3
 # IDE settings (the folder at the top of your image)
 .idea/
 
+
 # Environment variables (for secrets like SECRET_KEY)
 .env
