@@ -115,13 +115,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# settings.py
 STATIC_URL = 'static/'
-STATICFILES_DIRS = ['static']
+STATIC_ROOT = BASE_DIR / 'staticfiles' # Where the files go on the server
+STATICFILES_DIRS = [BASE_DIR / 'static'] # Where your files are now locally
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+# Use this forgiving version of WhiteNoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
