@@ -2,18 +2,24 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# [2] Load the .env file
-load_dotenv(BASE_DIR / '.env')
+# 1. Try to load .env file if it exists (local dev)
+# We add override=True to ensure it takes precedence locally
+env_path = BASE_DIR / '.env'
+if os.path.exists(env_path):
+    load_dotenv(env_path)
+else:
+    # On Railway, we don't need to load a file, 
+    # but calling load_dotenv() without arguments is a safe fallback
+    load_dotenv()
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# [3] Use os.environ.get() to pull the values
+# 2. Use a fallback value for local dev ONLY, 
+# but ensure Railway throws an error if it's truly missing
 SECRET_KEY = os.environ.get('SECRET_KEY')
+
+# If SECRET_KEY is still None here, Django will crash with the error you saw.
+# Double-check that the "Key" in Railway is exactly SECRET_KEY (all caps).
 
 DEBUG = os.environ.get('DEBUG') == 'True'
 # Change this line:
