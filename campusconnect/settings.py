@@ -132,8 +132,8 @@ LOGIN_REDIRECT_URL = 'items'
 LOGOUT_REDIRECT_URL = 'index'
 
 #for photos added
-import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+SECURE_SSL_REDIRECT = False
