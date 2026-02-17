@@ -126,9 +126,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #login redirection
-LOGIN_URL = 'login'
+LOGIN_URL = 'login_view'
 LOGIN_REDIRECT_URL = 'items'
-LOGOUT_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'home'
 
 #for photos added
 
