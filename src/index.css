@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 150 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 10% 15%;
+
+    --primary: 152 45% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 38 40% 92%;
+    --secondary-foreground: 30 20% 25%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 150 5% 45%;
+
+    --accent: 30 35% 88%;
+    --accent-foreground: 30 20% 20%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 152 45% 38%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 150 15% 96%;
+    --sidebar-foreground: 150 10% 25%;
+    --sidebar-primary: 152 45% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 20% 92%;
+    --sidebar-accent-foreground: 150 10% 20%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 152 45% 38%;
+
+    --earth: 30 25% 45%;
+    --earth-foreground: 0 0% 100%;
+    --leaf: 120 35% 50%;
+    --leaf-foreground: 0 0% 100%;
+    --warm: 38 60% 55%;
+    --warm-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 150 10% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 150 10% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 150 10% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 152 45% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 150 10% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 150 10% 18%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 30 15% 22%;
+    --accent-foreground: 40 20% 90%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 10% 20%;
+    --input: 150 10% 20%;
+    --ring: 152 45% 45%;
+
+    --earth: 30 20% 55%;
+    --earth-foreground: 0 0% 100%;
+    --leaf: 120 30% 55%;
+    --leaf-foreground: 0 0% 100%;
+    --warm: 38 50% 55%;
+    --warm-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'DM Sans', sans-serif;
+  }
+  .font-display {
+    font-family: 'Clash Display', 'Playfair Display', serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes scanline {
+  0% { top: 0%; }
+  50% { top: 95%; }
+  100% { top: 0%; }
+}
+.scanline {
+  animation: scanline 2s ease-in-out infinite;
+}
