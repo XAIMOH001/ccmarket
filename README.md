@@ -11,23 +11,29 @@ CampusConnect aims to solve the unique logistical and financial challenges stude
 The platform is built on a modern Django backend with a high-end, minimal PropTech aesthetic. Key features include:
 
 ### Verified Marketplace
+
 A central hub where students can browse items categorized by relevance (e.g., Electronics, Books, Stationery, Furniture).
 
 ### AI-Powered Listing (Computer Vision)
+
 Leveraging the Gemini 3 Flash API, the app automatically analyzes uploaded photos to generate professional item descriptions, reducing the friction for sellers.
 
 ### Secure Authentication
+
 Integrated login and registration systems that ensure only members of the university community can participate.
 
 ### Localized Logistics
+
 Unlike general marketplaces, CampusConnect focuses on specific pickup locations (e.g., "West Campus," "Hostel A") to eliminate shipping costs and safety concerns.
 
 ### Mobile-First Design
+
 Optimized for quick access on the go, allowing students to list or buy items between classes.
 
 ## Tech Stack
 
 **Frontend:**
+
 - React + TypeScript
 - Vite
 - Tailwind CSS
@@ -36,12 +42,14 @@ Optimized for quick access on the go, allowing students to list or buy items bet
 - TanStack Query
 
 **Backend:**
+
 - Django
 - Gemini 3 Flash API for AI-powered descriptions
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - Bun or npm/yarn
 
